@@ -14,7 +14,7 @@ resource "azurerm_linux_web_app" "app" {
     "ApplicationInsightsAgent_EXTENSION_VERSION" = "~3"
     "location"                                   = each.value
   }
-  
+
   site_config {
     ftps_state = "FtpsOnly"
 
@@ -53,7 +53,7 @@ resource "azurerm_monitor_diagnostic_setting" "app" {
     }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceAntivirusScanAuditLogs"
 
     retention_policy {
@@ -61,7 +61,7 @@ resource "azurerm_monitor_diagnostic_setting" "app" {
     }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceHTTPLogs"
 
     retention_policy {
@@ -69,7 +69,7 @@ resource "azurerm_monitor_diagnostic_setting" "app" {
     }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceConsoleLogs"
 
     retention_policy {
@@ -77,7 +77,7 @@ resource "azurerm_monitor_diagnostic_setting" "app" {
     }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceAppLogs"
 
     retention_policy {
@@ -85,7 +85,7 @@ resource "azurerm_monitor_diagnostic_setting" "app" {
     }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceFileAuditLogs"
 
     retention_policy {
@@ -93,7 +93,7 @@ resource "azurerm_monitor_diagnostic_setting" "app" {
     }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceAuditLogs"
 
     retention_policy {
@@ -101,7 +101,7 @@ resource "azurerm_monitor_diagnostic_setting" "app" {
     }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceIPSecAuditLogs"
 
     retention_policy {
@@ -109,7 +109,7 @@ resource "azurerm_monitor_diagnostic_setting" "app" {
     }
   }
 
-  log {
+  enabled_log {
     category = "AppServicePlatformLogs"
 
     retention_policy {
