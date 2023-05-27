@@ -42,7 +42,9 @@ resource "azapi_update_resource" "app" {
   for_each = toset(var.locations)
 
   type        = "Microsoft.Web/sites/basicPublishingCredentialsPolicies@2022-09-01"
-  resource_id = format("%s/scm", azurerm_linux_web_app.app[each.value].id)
+
+  parent_id = azurerm_linux_web_app.app[each.value].id
+  name = format("%s/scm", azurerm_linux_web_app.app[each.value].name)
 
   body = jsonencode({
     properties = {
