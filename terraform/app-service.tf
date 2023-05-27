@@ -15,6 +15,8 @@ resource "azurerm_linux_web_app" "app" {
     "location"                                   = each.value
   }
 
+  https_only = true
+
   site_config {
     ftps_state = "FtpsOnly"
 
