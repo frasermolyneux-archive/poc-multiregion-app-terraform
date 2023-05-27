@@ -14,10 +14,10 @@ resource "azurerm_linux_web_app" "app" {
     "ApplicationInsightsAgent_EXTENSION_VERSION" = "~3"
     "location"                                   = each.value
   }
-
-  ftps_state = "FtpsOnly"
-
+  
   site_config {
+    ftps_state = "FtpsOnly"
+
     application_stack {
       dotnet_version = "7.0"
     }
