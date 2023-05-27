@@ -18,7 +18,7 @@ resource "azurerm_linux_web_app" "app" {
   https_only = true
 
   site_config {
-    ftps_state = "FtpsOnly"
+    ftps_state = "Disabled"
 
     application_stack {
       dotnet_version = "7.0"
@@ -38,14 +38,12 @@ resource "azurerm_linux_web_app" "app" {
   }
 }
 
+// This is required as when the app service is created 'basic auth' is set as disabled which is required for the SCM deploy.
 resource "azapi_update_resource" "app" {
   for_each = toset(var.locations)
 
   type        = "Microsoft.Web/sites/basicPublishingCredentialsPolicies@2022-09-01"
-
-  //parent_id = azurerm_linux_web_app.app[each.value].id
   resource_id = format("%s/basicPublishingCredentialsPolicies/scm", azurerm_linux_web_app.app[each.value].id)
-  //name = format("%s/basicPublishingCredentialsPolicies", azurerm_linux_web_app.app[each.value].name)
 
   body = jsonencode({
     properties = {
