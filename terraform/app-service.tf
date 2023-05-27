@@ -38,6 +38,23 @@ resource "azurerm_linux_web_app" "app" {
   }
 }
 
+resource "azapi_update_resource" "app" {
+  for_each = toset(var.locations)
+
+  type        = "Microsoft.Web/sites/basicPublishingCredentialsPolicies@2022-09-01"
+  resource_id = format("%s/scm", azurerm_linux_web_app.app[each.value].id)
+
+  body = jsonencode({
+    properties = {
+      allow = true
+    }
+  })
+
+  depends_on = [
+    azurerm_linux_web_app.app,
+  ]
+}
+
 resource "azurerm_monitor_diagnostic_setting" "app" {
   for_each = toset(var.locations)
 
