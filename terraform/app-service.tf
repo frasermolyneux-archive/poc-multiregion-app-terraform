@@ -13,7 +13,6 @@ resource "azurerm_linux_web_app" "app" {
     "APPLICATIONINSIGHTS_CONNECTION_STRING"      = azurerm_application_insights.ai[each.value].connection_string
     "ApplicationInsightsAgent_EXTENSION_VERSION" = "~3"
     "location"                                   = each.value
-    "WEBSITE_WEBDEPLOY_USE_SCM"                  = true
   }
 
   site_config {
