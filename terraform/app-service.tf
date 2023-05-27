@@ -44,7 +44,7 @@ resource "azapi_update_resource" "app" {
   type        = "Microsoft.Web/sites/basicPublishingCredentialsPolicies@2022-09-01"
 
   parent_id = azurerm_linux_web_app.app[each.value].id
-  name = format("%s/basicPublishingCredentialsPolicies", azurerm_linux_web_app.app[each.value].name)
+  //name = format("%s/basicPublishingCredentialsPolicies", azurerm_linux_web_app.app[each.value].name)
 
   body = jsonencode({
     properties = {
