@@ -15,6 +15,8 @@ resource "azurerm_linux_web_app" "app" {
     "location"                                   = each.value
   }
 
+  ftps_state = "FtpsOnly"
+
   site_config {
     application_stack {
       dotnet_version = "7.0"
