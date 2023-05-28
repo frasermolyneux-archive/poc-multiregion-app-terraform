@@ -24,7 +24,7 @@ provider "azurerm" {
   }
 }
 
-provider "azapi" { }
+provider "azapi" {}
 
 data "azurerm_client_config" "current" {}
 
