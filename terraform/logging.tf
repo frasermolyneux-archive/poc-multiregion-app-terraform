@@ -1,8 +1,8 @@
 resource "azurerm_resource_group" "log" {
   for_each = toset(var.locations)
 
-  name     = format("rg-log-%s-%s-%s", random_id.environment_id.hex, var.environment, var.primary_location)
-  location = var.primary_location
+  name     = format("rg-log-%s-%s-%s", random_id.environment_id.hex, var.environment, each.value)
+  location = each.value
 
   tags = var.tags
 }
