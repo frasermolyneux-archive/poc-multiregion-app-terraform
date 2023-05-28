@@ -51,7 +51,7 @@ resource "azurerm_monitor_diagnostic_setting" "fd" {
     }
   }
 
-  log {
+  enabled_log {
     category = "FrontdoorAccessLog"
 
     retention_policy {
@@ -59,7 +59,7 @@ resource "azurerm_monitor_diagnostic_setting" "fd" {
     }
   }
 
-  log {
+  enabled_log {
     category = "FrontDoorHealthProbeLog"
 
     retention_policy {
@@ -67,7 +67,7 @@ resource "azurerm_monitor_diagnostic_setting" "fd" {
     }
   }
 
-  log {
+  enabled_log {
     category = "FrontDoorWebApplicationFirewallLog"
 
     retention_policy {
